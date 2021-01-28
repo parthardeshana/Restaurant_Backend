@@ -7,8 +7,8 @@ var restaurantDBObject = new restaurantdb();
 function routeRestaurants(app){
     app.route('/restaurants')
         .get(restaurantDBObject.getAllRestaurants);
-    app.route('/restaurants/:restaurantName')
-        .get(restaurantDBObject.getRestaurantsbyName);
+    app.route('/restaurants/:restaurantId')
+        .get(restaurantDBObject.getRestaurantsById);
     app.route('/cuisine/:cuisineName')
         .get(restaurantDBObject.getRestaurantsbyCousine);
     app.route('/region/:regionName')

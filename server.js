@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+const cors = require("cors");
 
 const routeRestaurants = require('./routes/routeRestaurants');
 const routeReviews = require('./routes/routeReviews');
@@ -15,6 +16,7 @@ var port = 8080;
 var startPage = "index.html";
 
 app.use(express.static("./public"));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

@@ -4,7 +4,7 @@ const Restaurant = require('../Models/Restaurant');
 
 class RestaurantDB{
     getAllRestaurants(request, respond){
-        var sql = "SELECT * FROM restaurantdb.restaurant";
+        var sql = "SELECT restaurant.*, AVG(review.Rating) as avgRating FROM restaurant JOIN review ON restaurant.restaurant_id = review.restaurant_id GROUP BY restaurant.restaurant_id";
         db.query(sql, function(error, result){
             if(error){
                 throw error;
@@ -15,15 +15,30 @@ class RestaurantDB{
         });
     }
 
-    getRestaurantsbyName(request,respond) {
-        var restaurantName = request.params.restaurantName;
-        var sql ="SELECT * FROM restaurantdb.restaurant WHERE restaurantName LIKE ?";
-        db.query(sql,restaurantName,function (error,result) {
+    getRestaurantsById(request,respond) {
+        var restaurantId = request.params.restaurantId;
+        var sql ="SELECT restaurant.*, AVG(review.Rating) as avgRating FROM restaurant JOIN review ON restaurant.restaurant_id = review.restaurant_id WHERE restaurant.restaurant_id = ?;";
+        db.query(sql,restaurantId,function (error,result) {
         if(error) {
         throw error;
         }
         else {
         respond.json(result);
+        }
+        });
+    }
+
+    getRestaurantsReview(request,respond) {
+        var restaurant_id = request.params.restaurant_id;
+        // var sql ="SELECT restaurant.*, AVG(review.Rating) as rating FROM restaurant JOIN review ON restaurant.restaurant_id = review.restaurant_id WHERE restaurant.restaurant_id = ?;";
+        db.query(sql, restaurant_id,function (error,result) {
+        if(error) {
+        throw error;
+        }
+        else {
+
+        respond.json(result);
+        // db.query()
         }
         });
     }

@@ -18,6 +18,18 @@ class ReviewsDB{
             }
         });
     }
+    getRestaurantReviewsById(request, respond){
+        var restaurant_id = request.params.restaurant_id;
+        var sql = "SELECT AVG(Rating) FROM restaurantdb.review WHERE restaurant_id = ?";
+        db.query(sql, restaurant_id, function(error, result){
+            if(error){
+                throw error;
+            }
+            else{
+                respond.json(result);
+            }
+        });
+    }
 
     addReviews(request, respond){
         var reviewsObject = new Reviews(request.body.content, request.body.PostedTime, 
