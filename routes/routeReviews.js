@@ -8,8 +8,9 @@ var reviewsDBObject = new reviewsdb();
 function routeReviews(app){
     app.route('/reviews')
         .post(reviewsDBObject.addReviews)
-        .get(reviewsDBObject.getAllReviews);
+        .get(reviewsDBObject.getAllReviews)
     app.route('/reviews/:id')
+        .get(reviewsDBObject.getRestaurantReviewsById)
         .delete(reviewsDBObject.deleteReview)
         .put(reviewsDBObject.updateReview);
 }
