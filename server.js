@@ -7,6 +7,8 @@ const cors = require("cors");
 const routeRestaurants = require('./routes/routeRestaurants');
 const routeReviews = require('./routes/routeReviews');
 const routeUsers = require('./routes/routeUsers');
+const routeCuisines = require('./routes/routeCuisine');
+
 
 const bodyParser = require("body-parser");
 const { response } = require("express");
@@ -24,6 +26,7 @@ app.use(bodyParser.json());
 routeRestaurants.routeRestaurants(app);
 routeReviews.routeReviews(app);
 routeUsers.routeUsers(app);
+routeCuisines.routeCuisines(app);
 
 
 function gotoIndex(req, res) {

@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`user` (
   `Address` VARCHAR(100) NULL DEFAULT NULL,
   `Email` VARCHAR(150) NOT NULL,
   `mobileNumber` INT NULL DEFAULT NULL,
+  -- Mobile Number define : Varchar
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4

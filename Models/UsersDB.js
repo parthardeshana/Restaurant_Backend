@@ -58,8 +58,8 @@ class UsersDB{
              request.body.Address, 
              request.body.Email, 
              request.body.mobileNumber);
-        var sql = "UPDATE restaurantdb.user SET password = ? WHERE user_id = ?";
-        var values = [usersObject.getPassword(),usersObject.getUser_id() ];
+        var sql = "UPDATE restaurantdb.user SET Password = ?, Email = ?, mobileNumber = ?, Address = ?  WHERE user_id = ?";
+        var values = [usersObject.getPassword(), usersObject.getEmail(), usersObject.getMobileNumber(), usersObject.getAddress(), usersObject.getUser_id() ];
         db.query(sql, values, function (error, result) {
             if(error){
                 throw error;
@@ -82,9 +82,6 @@ class UsersDB{
             }
           });
     }
-
-
-    
 }
 function prepareMessage(msg){
     var obj = {"message": msg};

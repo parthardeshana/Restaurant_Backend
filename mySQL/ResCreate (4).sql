@@ -16,7 +16,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema restaurantDB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `restaurantDB` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `restaurantDB` DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci; ;
 USE `restaurantDB` ;
 
 -- -----------------------------------------------------
@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`cuisine` (
   `cuisineName` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`cuisine_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
+-- DEFAULT CHARACTER SET = utf8mb4
+-- COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- -----------------------------------------------------
 -- Table `restaurantDB`.`region`
@@ -39,8 +39,9 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`region` (
   `regionName` VARCHAR(250) NULL DEFAULT NULL,
   PRIMARY KEY (`region_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- DEFAULT CHARACTER SET = utf8mb4
+-- COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
@@ -69,8 +70,7 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`restaurant` (
     FOREIGN KEY (`region_id`)
     REFERENCES `restaurantDB`.`region` (`region_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -87,8 +87,7 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`user` (
   `mobileNumber` INT NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -108,8 +107,7 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`favourite` (
     FOREIGN KEY (`user_id`)
     REFERENCES `restaurantDB`.`user` (`user_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -132,8 +130,7 @@ CREATE TABLE IF NOT EXISTS `restaurantDB`.`review` (
     FOREIGN KEY (`user_id`)
     REFERENCES `restaurantDB`.`user` (`user_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8_general_ci;
+DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -13,7 +13,8 @@ function routeRestaurants(app){
         .get(restaurantDBObject.getRestaurantsbyCousine);
     app.route('/region/:regionName')
         .get(restaurantDBObject.getRestaurantsbyRegion);
+    app.route('/region')
+        .get(restaurantDBObject.getRegions);
 }
 module.exports = {routeRestaurants};
-
 
